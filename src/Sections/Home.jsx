@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ParticlesBackground from "../components/particlesBackground";
+import ParticlesBackground from "../components/ParticlesBackground";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"; 
 import avator from "../assets/avator.png";
 

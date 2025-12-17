@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ParticlesBackground from "../components/particlesBackground";
+import ParticlesBackground from "../components/ParticlesBackground";
 import {motion} from "framer-motion"
 import emailjs from "@emailjs/browser";
 import Astra from "../assets/Astra.png";
