@@ -7,7 +7,7 @@ import Home from "./Sections/Home"
 import Projects from "./Sections/Projects"
 import Skills from "./Sections/Skills"
 import Testimonials from "./Sections/Testimonials"
-import particlesBackground from "./components/ParticlesBackground"
+import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor"
 import React from "react"
 import IntroAnimation from "./components/IntroAnimation"
