@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
-import m1 from "../assets/m1.png";
-import w1 from "../assets/w1.png";
-import m2 from "../assets/m2.png"; // make sure this exists
-import w2 from "../assets/w2.png";
+import m1 from "../assets/m1.PNG";
+import w1 from "../assets/w1.PNG";
+import m2 from "../assets/m2.PNG"; // make sure this exists
+import w2 from "../assets/w2.PNG";
 
 const testimonials = [
   {
