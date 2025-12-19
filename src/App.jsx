@@ -8,7 +8,6 @@ import Projects from "./Sections/Projects"
 import Skills from "./Sections/Skills"
 import Testimonials from "./Sections/Testimonials"
 import CustomCursor from "./components/CustomCursor"
-import ParticlesBackground from "./components/ParticlesBackground"
 import React from "react"
 import IntroAnimation from "./components/IntroAnimation"
 function App() {
