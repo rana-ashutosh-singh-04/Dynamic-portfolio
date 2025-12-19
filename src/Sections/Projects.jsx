@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import img1 from "../assets/img1.Jpg"
-import img2 from "../assets/img2.Jpg"
-import img3 from "../assets/img3.Jpg"
-import photo1 from "../assets/photo1.Jpg"
+import img1 from "../assets/img1.JPG"
+import img2 from "../assets/img2.JPG"
+import img3 from "../assets/img3.JPG"
+import photo1 from "../assets/photo1.JPG"
 import photo2 from "../assets/photo2.PNG"
-import photo3 from "../assets/photo3.png"
+import photo3 from "../assets/photo3.PNG"
 import { motion, AnimatePresence, useMotionValue, useMotionValueEvent, useScroll } from "framer-motion"
 
 const useIsMobile = (query = "(max-width: 639px)")=>{
