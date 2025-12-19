@@ -1,3 +1,4 @@
+import React from "react"
 import Navbar from "./components/Navbar"
 import About from "./Sections/About"
 import Contact from "./Sections/Contact"
@@ -8,8 +9,9 @@ import Projects from "./Sections/Projects"
 import Skills from "./Sections/Skills"
 import Testimonials from "./Sections/Testimonials"
 import CustomCursor from "./components/CustomCursor"
-import React from "react"
 import IntroAnimation from "./components/IntroAnimation"
+import ParticlesBackground from "./components/ParticlesBackground";
+
 function App() {
   const [introDone, setIntroDone] = React.useState(false);
   return (
