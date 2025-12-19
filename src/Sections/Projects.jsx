@@ -31,14 +31,14 @@ export default function Project(){
  const projects = useMemo(
     () => [
       {
-        title: "nk studio",
-        link: "https://www.nk.studio/",
+        title: "WanderLust",
+        link: "https://wander-lust-9ooy.vercel.app/listings",
         bgColor: "#0d4d3d",
         image: isMobile ? photo1 : img1, // use mobile or desktop image
       },
       {
-        title: "Gamily",
-        link: "https://gamilyapp.com/",
+        title: "Dynamic Portfolio",
+        link: "https://ranaashutoshsinghrajput.vercel.app/",
         bgColor: "#3884d3",
         image: isMobile ? photo2 : img2,
       },
@@ -49,7 +49,7 @@ export default function Project(){
         image: isMobile ? photo3 : img3,
       },
     ],
-    [isMobile] // re-run only when `isMobile` changes
+    [isMobile] 
   );
 
   const {scrollYProgress} = useScroll({
