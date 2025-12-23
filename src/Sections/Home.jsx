@@ -16,7 +16,7 @@ const glowVariants = {
 };
 
 const socials = [
-  { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com" },
+  { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/ranaashutosh_singhrajput/" },
   { icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/rana-ashutosh-singh-416420322/" },
   { icon: FaGithub, label: "GitHub", href: "https://github.com/rana-ashutosh-singh-04" },
 ];
