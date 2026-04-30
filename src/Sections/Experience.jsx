@@ -45,17 +45,17 @@ const projects = [
 // ———————————————————————————————————————————
 
 function ProjectItem({ project, idx, start, end, scrollYProgress, layout }) {
-  // Smooth fade + slide + scale
-  const opacity = useTransform(scrollYProgress, [start + 0.05, end - 0.05], [0, 1]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [start + 0.05, end - 0.05],
+    [0, 1]
+  );
   const scale = useTransform(scrollYProgress, [start, end], [0.85, 1]);
   const y = useTransform(
     scrollYProgress,
     [start, end],
     [idx % 2 === 0 ? 60 : -60, 0]
   );
-
-  // Hide element fully until visible (no ghost)
-  const display = useTransform(opacity, (o) => (o === 0 ? "none" : "block"));
 
   const featuresText = project.features.join(" • ");
 
@@ -71,25 +71,21 @@ function ProjectItem({ project, idx, start, end, scrollYProgress, layout }) {
 
         {/* Connector Line */}
         <motion.div
-          className={`absolute ${
-            idx % 2 === 0 ? "-top-14" : "-bottom-14"
-          } w-[3px] bg-white/40`}
+          className={`absolute ${idx % 2 === 0 ? "-top-14" : "-bottom-14"
+            } w-[3px] bg-white/40`}
           style={{ height: 60, opacity }}
         />
 
         {/* Main Card */}
         <motion.article
-          className={`absolute ${
-            idx % 2 === 0 ? "bottom-24" : "top-24"
-          } bg-[#0d1117]/90 border border-gray-700/70 backdrop-blur-xl rounded-xl p-7 w-[360px] shadow-xl pointer-events-auto`}
-          style={{ opacity, y, scale, display }}
+          className={`absolute ${idx % 2 === 0 ? "bottom-24" : "top-24"
+            } bg-[#0d1117]/90 border border-gray-700/70 backdrop-blur-xl rounded-xl p-7 w-[360px] shadow-xl pointer-events-auto`}
+          style={{ opacity, y, scale }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h3 className="text-xl font-semibold">{project.title}</h3>
           <p className="text-sm text-gray-400 mb-3">{project.stack}</p>
-
           <p className="text-sm text-gray-300">{project.description}</p>
-
           <p className="mt-3 text-xs text-gray-500">{featuresText}</p>
         </motion.article>
       </div>
@@ -106,7 +102,7 @@ function ProjectItem({ project, idx, start, end, scrollYProgress, layout }) {
 
       <motion.article
         className="bg-[#0d1117]/90 border border-gray-700/70 backdrop-blur-xl rounded-xl p-5 w-[90vw] max-w-sm ml-6 shadow-lg"
-        style={{ opacity, scale, y, display }}
+        style={{ opacity, scale, y }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h3 className="text-lg font-semibold">{project.title}</h3>
@@ -133,23 +129,27 @@ export default function Experience() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const SCENE_HEIGHT = isMobile ? 180 * projects.length : 130 * projects.length;
+  const SCENE_HEIGHT = isMobile
+    ? 180 * projects.length
+    : 130 * projects.length;
 
   const { scrollYProgress } = useScroll({
     target: sceneRef,
     offset: ["start start", "end end"],
   });
 
+  // FIX: added projects to deps array
   const thresholds = useMemo(
     () =>
       projects.map((_, i) => ({
         start: i / projects.length,
         end: (i + 1) / projects.length,
       })),
-    []
+    [projects]
   );
 
-  const lineSize = useTransform(scrollYProgress, (v) => `${v * 100}%`);
+  // FIX: use input/output array form instead of function form
+  const lineSize = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section id="experience" className="relative bg-black text-white">
@@ -166,17 +166,28 @@ export default function Experience() {
           <div className="flex flex-1 items-center justify-center px-6 pb-10">
             {/* DESKTOP TIMELINE */}
             {!isMobile && (
-              <div className="relative w-full max-w-7xl mx-auto">
-                <div className="relative h-[6px] bg-white/20 rounded overflow-hidden">
+              /*
+               * Give the wrapper an explicit height (400px) so that
+               * `top-1/2` on children resolves to 200px — the true
+               * vertical midpoint — rather than 3px (half of the 6px line).
+               * Everything (track, dots, cards) is absolutely positioned
+               * relative to this single container.
+               */
+              <div className="relative w-full max-w-7xl mx-auto" style={{ height: 400 }}>
+
+                {/* Track — centred vertically in the 400px wrapper */}
+                <div
+                  className="absolute left-0 right-0 bg-white/20 rounded overflow-hidden"
+                  style={{ top: "50%", transform: "translateY(-50%)", height: 6 }}
+                >
                   <motion.div
                     className="absolute left-0 top-0 h-full bg-white/70"
                     style={{ width: lineSize }}
                   />
                 </div>
 
-                {/* Items */}
-                <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 
-                flex justify-between items-center gap-48">
+                {/* Dots + Cards row — same vertical centre as the track */}
+                <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between items-center">
                   {projects.map((p, i) => {
                     const { start, end } = thresholds[i];
                     return (

@@ -1,5 +1,6 @@
 import React from "react"
 import Navbar from "./components/Navbar"
+import SplineAnimation from "./components/splineAnimation"
 import About from "./Sections/About"
 import Contact from "./Sections/Contact"
 import Experience from "./Sections/Experience"
@@ -16,23 +17,24 @@ function App() {
   const [introDone, setIntroDone] = React.useState(false);
   return (
     <>
-    {!introDone && <IntroAnimation onFinish={()=> setIntroDone(true)}/>}
-      
+      {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}
+
       {introDone && (
 
-      <div className="relative gradient text-white">
-        <CustomCursor/> 
-        <Navbar/>
-        <Home/>
-        <About/>
-        <Skills/>
-        <Projects/>
-        <Experience/>
-        <Testimonials/>
-        <Contact/>
-        <Footer/>
-       </div>
-        )}
+        <div className="relative gradient text-white">
+          <CustomCursor />
+          <Navbar />
+          <SplineAnimation />
+          <Home />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </div>
+      )}
     </>
   )
 }
